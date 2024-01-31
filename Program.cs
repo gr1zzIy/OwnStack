@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            OwnStack instance = new OwnStack();
+            OwnStack<int> instance = new OwnStack<int>();
 
             instance.Push(1);
             instance.Push(2);

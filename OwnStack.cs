@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OwnStack
 {
-    public class OwnStack
+    public class OwnStack<T>
     {
-        private object[] _items;
+        private T[] _items;
         
         public int Count {  get; private set; } // К-сть дійсно зберігаємих елементів в _items (по замовчувані = 0)
         public int Capacity // К-сть максимально можливих  елементів в _items (по замовчувані = defaultCapacity)
@@ -22,19 +22,19 @@ namespace OwnStack
         public OwnStack() 
         { 
             const int defaultCapacity = 4;
-            _items = new object[defaultCapacity];
+            _items = new T[defaultCapacity];
         }
 
         public OwnStack(int capacity)
         {
-            _items = new object[capacity];
+            _items = new T[capacity];
         }
 
-        public void Push(object item)
+        public void Push(T item)
         {
             if(Capacity == Count)
             {
-                object[] doubleItems = new object[Count * 2];
+                T[] doubleItems = new T[Count * 2];
                 Array.Copy(_items, doubleItems, Count);
 
                 _items = doubleItems;
@@ -50,7 +50,7 @@ namespace OwnStack
                 throw new InvalidOperationException();
             }
 
-            _items[--Count] = null;
+            _items[--Count] = default;
         }
 
         public object Peek()
