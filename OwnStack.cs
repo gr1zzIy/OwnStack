@@ -53,7 +53,7 @@ namespace OwnStack
             _items[--Count] = default;
         }
 
-        public object Peek()
+        public T Peek()
         {
             if (Count == 0)
             {
